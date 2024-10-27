@@ -1,5 +1,8 @@
 "use client";
 
+import { EmptyFavourites } from "./empty-favourites";
+import { EmptySearch } from "./empty-search";
+
 interface BoardListProps {
     orgId: string;
     query: {
@@ -13,17 +16,13 @@ export const BoardList = ({ orgId, query } : BoardListProps) => {
 
     if (!data?.length && query.search) {
         return (
-            <div>
-                Try Search something
-            </div>
+            <EmptySearch/>
         );
     };
 
     if (!data?.length && query.favourites) {
         return (
-            <div>
-                no Favorites
-            </div>
+            <EmptyFavourites/>
         );
     };
 

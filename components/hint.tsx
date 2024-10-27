@@ -24,7 +24,7 @@ export const Hint = ({
 } : HintProps) => {
     return (
       <TooltipProvider>
-        <Tooltip delayDuration={100} disableHoverableContent>
+        <Tooltip delayDuration={100}>
           <TooltipTrigger asChild>{children}</TooltipTrigger>
           <TooltipContent
             className="text-white bg-black border-black"

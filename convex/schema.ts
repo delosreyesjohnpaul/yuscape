@@ -26,6 +26,4 @@ export default defineSchema({
     .index("by_user_org", ["userId", "orgId"])
     .index("by_user_board", ["userId", "boardId"])
     .index("by_user_board_org", ["userId", "boardId", "orgId"]),
-
-    
 })

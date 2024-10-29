@@ -25,10 +25,13 @@ type Storage = {
 // Optionally, UserMeta represents static/readonly metadata on each User, as
 // provided by your own custom auth backend (if used). Useful for data that
 // will not change during a session, like a User's name or avatar.
-// type UserMeta = {
-//   id?: string,  // Accessible through `user.id`
-//   info?: Json,  // Accessible through `user.info`
-// };
+type UserMeta = {
+  id?: string;
+  info?: {
+    name?: string;
+    picture?: string;
+  };
+};
 
 // Optionally, the type of custom events broadcast and listened to in this
 // room. Must be JSON-serializable.

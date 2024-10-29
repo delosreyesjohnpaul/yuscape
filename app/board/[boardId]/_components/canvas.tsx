@@ -14,6 +14,7 @@ import { CursorPresence } from "./cursors-presence";
 import { connectionIdToColor, pointerEventToCanvasPoint } from "@/lib/utils";
 import { LiveObject } from "@liveblocks/client";
 import { LayerPreview } from "./layer-preview";
+import { SelectionBox } from "./selection-box";
 
 const MAX_LAYERS = 1000;
 
@@ -117,7 +118,7 @@ export const Canvas = ({ boardId }: CanvasProps) => {
   const selections = useOthersMapped((other) => other.presence.selection);
 
   
-  const handleLayerPointerDown = useMutation(
+  const onLayerPointerDown = useMutation(
     ({ self, setMyPresence }, e: React.PointerEvent, layerId: string) => {
       if (
         canvasState.mode === CanvasMode.Pencil ||
@@ -186,11 +187,15 @@ export const Canvas = ({ boardId }: CanvasProps) => {
                     <LayerPreview
                       key={layerId}
                       id={layerId}
-                      onLayerPointerDown={handleLayerPointerDown}
+                      onLayerPointerDown={onLayerPointerDown}
                        selectionColor={layerIdsToColorSelection[layerId]}
                     />
                   ))}
-                    <CursorPresence />
+
+                  <SelectionBox
+                    onResizeHandlePointerDown={() => {}}
+                  />
+                  <CursorPresence />
                 </g>  
             </svg>
         </main>

@@ -1,5 +1,6 @@
 "use client";
 
+import { connectionIdToColor } from "@/lib/utils";
 import { UserAvatar } from "./user-avatar"; 
 import { useOthers, useSelf } from "@/liveblocks.config";
 
@@ -24,12 +25,14 @@ export const Participants = () => {
                     src={picture}
                     name={info?.name}
                     fallback={info?.name?.[0] || "T"}
+                    borderColor={connectionIdToColor(connectionId)}
                   />
                 );
               })}
 
               {currentUser && (
                 <UserAvatar
+                  borderColor={connectionIdToColor(currentUser.connectionId)}
                   src={typeof currentUser.info?.picture === 'string' ? currentUser.info.picture : undefined}
                   name={`${currentUser.info?.name} (You)`}
                   fallback={currentUser.info?.name?.[0]}
